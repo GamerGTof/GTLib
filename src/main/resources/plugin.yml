@@ -1,0 +1,3 @@
+version: 1.0
+main: gt.gtlib.GTLib
+name: GTLib

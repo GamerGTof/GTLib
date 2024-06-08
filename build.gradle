@@ -1,0 +1,36 @@
+plugins {
+    id 'java'
+    id "me.champeau.jmh" version "0.6.8"
+}
+
+group 'gt'
+version '1.0-SNAPSHOT'
+
+tasks.compileJava { options.release.set(17) }
+
+repositories {
+    mavenCentral()
+    maven { url = uri("https://repo.papermc.io/repository/maven-public/") }
+    mavenLocal()
+}
+
+def serverDr = "D:\\Documentos\\Outros\\McServer"
+
+task copyJarToServerPlugins(type: Copy) {
+    from "build/libs"
+    into serverDr + "\\plugins"
+}
+
+
+dependencies {
+    jmh 'io.papermc.paper:paper-api:1.18.2-R0.1-SNAPSHOT'
+    compileOnly 'io.papermc.paper:paper-api:1.18.2-R0.1-SNAPSHOT'
+    implementation 'org.jetbrains:annotations:23.0.0'
+
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
+}
+
+test {
+    useJUnitPlatform()
+}
