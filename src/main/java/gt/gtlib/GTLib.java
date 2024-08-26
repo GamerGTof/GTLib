@@ -15,11 +15,6 @@ public class GTLib extends JavaPlugin {
         instance = this;
     }
 
-
-    public int getLen(String s) {
-        return s.length();
-    }
-
     public static GTLib getInstance() {
         return instance;
     }
